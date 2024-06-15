@@ -1,0 +1,95 @@
+# Define the rooms and their descriptions
+rooms = {
+    'Hall': {
+        'description': 'You are in the hall. There is a door to the kitchen and a stairway leading upstairs.',
+        'north': 'Kitchen',
+        'upstairs': 'Bedroom'
+    },
+    'Kitchen': {
+        'description': 'You are in the kitchen. There is a door back to the hall.',
+        'south': 'Hall'
+    },
+    'Bedroom': {
+        'description': 'You are in the bedroom. There is a stairway leading back downstairs.',
+        'downstairs': 'Hall'
+    }
+}
+
+# Initialize the starting location
+current_room = 'Hall'
+def print_room_description(room):
+    print(rooms[room]['description'])
+
+def get_next_move():
+    return input("Where do you want to go? ").strip().lower()
+
+def move(current_room, direction):
+    if direction in rooms[current_room]:
+        return rooms[current_room][direction]
+    else:
+        print("You can't go that way!")
+        return current_room
+
+# Game loop
+while True:
+    print_room_description(current_room)
+
+    move_direction = get_next_move()
+    if move_direction in ['quit', 'exit']:
+        print("Thanks for playing!")
+        break
+
+    current_room = move(current_room, move_direction)
+# Define the rooms and their descriptions
+rooms = {
+    'Hall': {
+        'description': 'You are in the hall. There is a door to the kitchen and a stairway leading upstairs.',
+        'north': 'Kitchen',
+        'upstairs': 'Bedroom'
+    },
+    'Kitchen': {
+        'description': 'You are in the kitchen. There is a door back to the hall.',
+        'south': 'Hall'
+    },
+    'Bedroom': {
+        'description': 'You are in the bedroom. There is a stairway leading back downstairs.',
+        'downstairs': 'Hall'
+    }
+}
+
+# Initialize the starting location
+current_room = 'Hall'
+
+def print_room_description(room):
+    """
+    Prints the description of the current room.
+    """
+    print(rooms[room]['description'])
+
+def get_next_move():
+    """
+    Prompts the player to enter their next move.
+    """
+    return input("Where do you want to go? (type 'quit' to exit) ").strip().lower()
+
+def move(current_room, direction):
+    """
+    Attempts to move to a new room based on the direction provided.
+    Returns the new room if the move is valid, otherwise returns the current room.
+    """
+    if direction in rooms[current_room]:
+        return rooms[current_room][direction]
+    else:
+        print("You can't go that way!")
+        return current_room
+
+# Game loop
+while True:
+    print_room_description(current_room)
+
+    move_direction = get_next_move()
+    if move_direction in ['quit', 'exit']:
+        print("Thanks for playing!")
+        break
+
+    current_room = move(current_room, move_direction)
